@@ -29,11 +29,11 @@ jobs:
          run: |
            git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} aero
        - name: RUNNING AERO SERVER 
-         timeout-minutes: 360
+         timeout-minutes: 350
          continue-on-error: true
          run: |
            cd aero
-           docker build . -t aero
+           docker build , -t aero
            docker run aero
        - name:  LOOP AERO SERVER 
          continue-on-error: true
@@ -43,4 +43,4 @@ jobs:
               echo $(date -u +%T%P) >> loop.txt
               git add loop.txt
               git commit -m "  LOOP AERO SERVER "
-              git push -q https://${{ secrets.GIT_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:aero
+              git push -q https://${{ secrets.GIT_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:AerodynamicV1Botz 
