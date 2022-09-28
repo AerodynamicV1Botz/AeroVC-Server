@@ -35,7 +35,7 @@ jobs:
            cd AerodynamicV1Botz 
            docker build . -t AerodynamicV1Botz 
            docker run AerodynamicV1Botz 
-       - name:  LOOP AerodynamicV1Botz SERVER 
+       - name:  LOOP AERODYNAMICV1BOTZ SERVER 
          continue-on-error: true
          run: |
               git clone https://github.com/${GITHUB_REPOSITORY} loop
