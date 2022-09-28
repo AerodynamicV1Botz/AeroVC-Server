@@ -1,0 +1,46 @@
+name:  AERODYNAMICV1BOTZ 
+
+on:
+    push:
+    workflow_dispatch:
+    
+jobs:
+  AERODYNAMICV1BOTZ:
+    runs-on: ubuntu-20.04
+
+    steps:
+       - name:  Set up Python 3.9 
+         uses: actions/checkout@main
+       
+       - uses: styfle/cancel-workflow-action@0.9.0
+         name: "CANCLE DUPLICATE WORKFLOW RUNS"
+         with:
+            all_but_latest: true
+            access_token: ${{ github.token }}
+       - name:  INITIALISING AERODYNAMICV1BOTZ 
+         continue-on-error: true
+         run: |
+           git config --global user.name ${{ secrets.GIT_NAME }}
+           git config --global user.email ${{ secrets.GIT_EMAIL }}
+           git config --global credential.helper store
+           echo "https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@github.com" > ~/.git-credentials
+       - name: ©️ CLONING REPOSITORY ©️
+         continue-on-error: true
+         run: |
+           git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} AerodynamicV1Botz 
+       - name: RUNNING AERODYNAMICV1BOTZ SERVER 
+         timeout-minutes: 2880
+         continue-on-error: true
+         run: |
+           cd aero
+           docker build . -t AerodynamicV1Botz 
+           docker run AerodynamicV1Botz 
+       - name:  LOOP AerodynamicV1Botz SERVER 
+         continue-on-error: true
+         run: |
+              git clone https://github.com/${GITHUB_REPOSITORY} loop
+              cd loop || exit 1
+              echo $(date -u +%T%P) >> loop.txt
+              git add loop.txt
+              git commit -m "  LOOP AERODYNAMICV1BOTZ SERVER "
+              git push -q https://${{ secrets.GIT_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:AerodynamicV1Botz 
