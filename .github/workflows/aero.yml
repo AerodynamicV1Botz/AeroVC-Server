@@ -29,7 +29,7 @@ jobs:
          run: |
            git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} aero
        - name: RUNNING AERO SERVER 
-         timeout-minutes: 460
+         timeout-minutes: 360
          continue-on-error: true
          run: |
            cd aero
