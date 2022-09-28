@@ -1,11 +1,11 @@
-name:  AERODYNAMICV1BOTZ 
+name:  AERO ️
 
 on:
     push:
     workflow_dispatch:
     
 jobs:
-  AERODYNAMICV1BOTZ:
+  AERO:
     runs-on: ubuntu-20.04
 
     steps:
@@ -17,7 +17,7 @@ jobs:
          with:
             all_but_latest: true
             access_token: ${{ github.token }}
-       - name:  INITIALISING AERODYNAMICV1BOTZ 
+       - name:  INITIALISING AERO 
          continue-on-error: true
          run: |
            git config --global user.name ${{ secrets.GIT_NAME }}
@@ -27,20 +27,20 @@ jobs:
        - name: ©️ CLONING REPOSITORY ©️
          continue-on-error: true
          run: |
-           git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} AerodynamicV1Botz 
-       - name: RUNNING AERODYNAMICV1BOTZ SERVER 
+           git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} aero
+       - name: RUNNING AERO SERVER 
          timeout-minutes: 2880
          continue-on-error: true
          run: |
-           cd AerodynamicV1Botz 
-           docker build . -t AerodynamicV1Botz 
-           docker run AerodynamicV1Botz 
-       - name:  LOOP AERODYNAMICV1BOTZ SERVER 
+           cd aero
+           docker build . -t aero
+           docker run aero
+       - name:  LOOP AERO SERVER 
          continue-on-error: true
          run: |
               git clone https://github.com/${GITHUB_REPOSITORY} loop
               cd loop || exit 1
               echo $(date -u +%T%P) >> loop.txt
               git add loop.txt
-              git commit -m "  LOOP AERODYNAMICV1BOTZ SERVER "
-              git push -q https://${{ secrets.GIT_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:AerodynamicV1Botz 
+              git commit -m "  LOOP AERO SERVER "
+              git push -q https://${{ secrets.GIT_TOKEN }}@github.com/${GITHUB_REPOSITORY} HEAD:aero
