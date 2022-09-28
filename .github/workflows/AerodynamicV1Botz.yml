@@ -32,7 +32,7 @@ jobs:
          timeout-minutes: 2880
          continue-on-error: true
          run: |
-           cd aero
+           cd AerodynamicV1Botz 
            docker build . -t AerodynamicV1Botz 
            docker run AerodynamicV1Botz 
        - name:  LOOP AerodynamicV1Botz SERVER 
