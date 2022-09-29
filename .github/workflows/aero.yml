@@ -29,11 +29,11 @@ jobs:
          run: |
            git clone https://${{ secrets.GIT_NAME }}:${{ secrets.GIT_TOKEN }}@${{ secrets.BOT_REPO }} aero
        - name: RUNNING AERO SERVER 
-         timeout-minutes: 350
+         timeout-minutes: 720
          continue-on-error: true
          run: |
            cd aero
-           docker build , -t aero
+           docker build . -t aero
            docker run aero
        - name:  LOOP AERO SERVER 
          continue-on-error: true
